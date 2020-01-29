@@ -1,0 +1,45 @@
+/* @tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+
+DOESNT WORK FOR HOKIESPA
+
+
+
+ */
+
+.bg-hokieOrange{
+    background-color: #CF4420;
+}
+
+.bg-hokieMaroon{
+    background-color: #6A2C3E;
+}
+
+.text-hokieOrange{
+    color: #CF4420;
+}
+
+.text-hokieMaroon{
+    color: #6A2C3E;
+}
+
+.hokieHover{
+    background-color: #CF4420;
+}
+
+.hokieHover:hover{
+    background-color: #6A2C3E;
+}
+
+.openSans {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.roboto {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2 !important;
+}
