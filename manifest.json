@@ -37,7 +37,8 @@
       ],
       "js": [
         "content.js",
-        "injectHTML.js"
+        "injectHTML.js",
+        "NewSearchResults.js"
       ]
     }
   ],
