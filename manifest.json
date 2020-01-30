@@ -13,8 +13,9 @@
     "NewLogin.html",
     "NewHome.html",
     "NewResults.html",
-    "NewHokieSpa.html",
-    "NewHokieSpaContent.html",
+    "NewHokieSpaHome.html",
+    "NewHokiePLUS.html",
+    "NewNeck.html",
     "NewHeader.html",
     "NewFooter.html",
     "NewListElement.html"

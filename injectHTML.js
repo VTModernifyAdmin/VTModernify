@@ -1,8 +1,8 @@
 
 // this function decides how to load a given page depending on the URL
-function load(dest) {
+function load(destURL) {
 
-    if (dest == "https://banweb.banner.vt.edu/ssb/prod/twbkwbis.P_GenMenu?name=bmenu.P_MainMnu") {
+    if (destURL == "https://banweb.banner.vt.edu/ssb/prod/twbkwbis.P_GenMenu?name=bmenu.P_MainMnu") {
         //homepage
         document.body.innerHTML = null;
         loadHTML("NewHeader.html", function () {
@@ -12,14 +12,12 @@ function load(dest) {
         });
 
     }
-    else if (dest == "https://banweb.banner.vt.edu/ssb/prod/twbkwbis.P_WWWLogin") {
+    else if (destURL == "https://banweb.banner.vt.edu/ssb/prod/twbkwbis.P_WWWLogin") {
         //login
         document.body.innerHTML = null;
-
         loadHTML('NewLogin.html', function () { });
-
     }
-    else if (dest == "https://banweb.banner.vt.edu/ssb/prod/twbksrch.P_ShowResults") {
+    else if (destURL == "https://banweb.banner.vt.edu/ssb/prod/twbksrch.P_ShowResults") {
         //search results
         var results = getSearchResults();
 
@@ -32,28 +30,30 @@ function load(dest) {
 
         loadHTML("NewFooter.html", function () { });
     }
-    else if (dest == "https://banweb.banner.vt.edu/ssb/prod/twbkwbis.P_GenMenu?name=bmenu.P_StuMainMnu" ||
-        dest == "https://banweb.banner.vt.edu/ssb/prod/twbkwbis.P_GenMenu?name=bmenu.P_StuMainMnu#") {
+    else if (destURL == "https://banweb.banner.vt.edu/ssb/prod/twbkwbis.P_GenMenu?name=bmenu.P_StuMainMnu" ||
+        destURL == "https://banweb.banner.vt.edu/ssb/prod/twbkwbis.P_GenMenu?name=bmenu.P_StuMainMnu#") {
 
         document.body.innerHTML = null;
         
+        console.log("teset")
+
         //hokiespa
         loadHTML("NewHeader.html", () => {
-            loadHTML('NewHokieSpa.html', () => {
-                loadHTML('NewHokieSpaContent.html', () => {
+            loadHTML('NewNeck.html', () => {
+                loadHTML('NewHokieSpaHome.html', () => {
                     loadHTML("NewFooter.html", () => { })
                 })
             })
         });
     }
-    else if (dest == "https://banweb.banner.vt.edu/ssb/prod/twbkwbis.P_GenMenu?name=bmenu.P_GenMnu") {
+    else if (destURL == "https://banweb.banner.vt.edu/ssb/prod/twbkwbis.P_GenMenu?name=bmenu.P_GenMnu") {
         //hokieplus
 
         document.body.innerHTML = null;
 
         loadHTML("NewHeader.html", () => {
-            loadHTML('NewHokieSpa.html', () => {
-                generateHokiePLUS(() => {
+            loadHTML('NewNeck.html', () => {
+                loadHTML('NewHokiePLUS.html',() => {
                     loadHTML("NewFooter.html", () => { })
                 })
             })
@@ -67,6 +67,7 @@ function load(dest) {
         .forEach(el => el.parentNode.removeChild(el));
 
     // imports cdns into the head of the html
+    // this is so that I can use the UI kit styling
     var sc = document.createElement("script");
     sc.setAttribute("src", "https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/js/uikit.min.js");
     sc.setAttribute("type", "text/javascript");
@@ -76,10 +77,10 @@ function load(dest) {
     sc2.setAttribute("src", "https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/js/uikit-icons.min.js");
     sc2.setAttribute("type", "text/javascript");
     document.head.appendChild(sc2);
-
 }
 
 
+//Adds a HTML to the DOM
 function loadHTML(localURL, callback) {
     const url = chrome.runtime.getURL(localURL);
 
@@ -97,20 +98,7 @@ function loadHTML(localURL, callback) {
 }
 
 
-// function getSearchResultsTest() {
-//     var i = 0;
-//     document.querySelectorAll('caption')
-//         .forEach(element => {
-//             var toAdd = document.createElement("div");
-//             toAdd.innerHTML = i + element.innerHTML;
-//             document.body.appendChild(toAdd);
-//         });
-// }
-
-
-
-// put this with generate html 
-
+//returns a list of the search results scraped from the search page
 function getSearchResults() {
     var out = [];
 
@@ -125,6 +113,7 @@ function getSearchResults() {
     return { "title": title, "results": out };
 }
 
+//Adds the results to the DOM
 function printResults(results) {
 
     var title = document.createElement("h3");
@@ -146,12 +135,3 @@ function printResults(results) {
     });
 
 }
-
-
-//TODO
-/*
-Create dynmically loaded pages based on the content of the hokiespa HTML page
-- do this with timetable of classes
-
-
-*/
