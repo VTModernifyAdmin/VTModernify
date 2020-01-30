@@ -33,5 +33,4 @@ function loadNewSearchResults(results) {
         link.innerHTML = icon.outerHTML + result;
         toAdd.appendChild(link);
     });
-
 }
