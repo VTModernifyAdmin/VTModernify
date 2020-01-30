@@ -34,7 +34,7 @@ function load(destURL) {
         destURL == "https://banweb.banner.vt.edu/ssb/prod/twbkwbis.P_GenMenu?name=bmenu.P_StuMainMnu#") {
 
         document.body.innerHTML = null;
-        
+
         console.log("teset")
 
         //hokiespa
@@ -52,10 +52,8 @@ function load(destURL) {
         document.body.innerHTML = null;
 
         loadHTML("NewHeader.html", () => {
-            loadHTML('NewNeck.html', () => {
-                loadHTML('NewHokiePLUS.html',() => {
-                    loadHTML("NewFooter.html", () => { })
-                })
+            loadHTML('NewHokiePLUS.html', () => {
+                loadHTML("NewFooter.html", () => { })
             })
         });
 

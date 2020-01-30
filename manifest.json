@@ -37,8 +37,7 @@
       ],
       "js": [
         "content.js",
-        "injectHTML.js",
-        "generateHTML.js"
+        "injectHTML.js"
       ]
     }
   ],
