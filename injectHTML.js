@@ -1,15 +1,30 @@
 
 // this function decides how to load a given page depending on the URL
 function load(destURL) {
-
+    var dispTeam = false;
+    var tabs = document.getElementsByClassName("taboff");
+    for (var i = 0; i < tabs.length; i++) {
+        if (tabs[i].innerHTML.toString().includes("Team")) {
+            dispTeam = true;
+        }
+    }
     if (destURL == "https://banweb.banner.vt.edu/ssb/prod/twbkwbis.P_GenMenu?name=bmenu.P_MainMnu") {
         //homepage
         document.body.innerHTML = null;
-        loadHTML("NewHeader.html", function () {
-            loadHTML('NewHome.html', function () {
-                loadHTML("NewFooter.html", function () { });
+        if (dispTeam) {
+            loadHTML("NewTeamHeader.html", function () {
+                loadHTML('NewHome.html', function () {
+                    loadHTML("NewFooter.html", function () { });
+                });
             });
-        });
+        }
+        else {
+            loadHTML("NewHeader.html", function () {
+                loadHTML('NewHome.html', function () {
+                    loadHTML("NewFooter.html", function () { });
+                });
+            });
+    }
 
     }
     else if (destURL == "https://banweb.banner.vt.edu/ssb/prod/twbkwbis.P_WWWLogin") {
@@ -22,40 +37,77 @@ function load(destURL) {
         var results = getNewSearchResults();
         document.body.innerHTML = null;
 
-        loadHTML("NewHeader.html", function () {            
-            loadHTML('NewResults.html', function () {
+        if (dispTeam) {
+            loadHTML("NewTeamHeader.html", function () {
+                loadHTML('NewResults.html', function () {
                 loadNewSearchResults(results);
 
-                loadHTML("NewFooter.html", function () { });
+                    loadHTML("NewFooter.html", function () { });
+                });
             });
+        }
+        else {
+            loadHTML("NewHeader.html", function () {
+                loadHTML('NewResults.html', function () {
+                loadNewSearchResults(results);
 
-        });
+                    loadHTML("NewFooter.html", function () { });
+                });
+            });
+        }
     }
     else if (destURL == "https://banweb.banner.vt.edu/ssb/prod/twbkwbis.P_GenMenu?name=bmenu.P_StuMainMnu" ||
         destURL == "https://banweb.banner.vt.edu/ssb/prod/twbkwbis.P_GenMenu?name=bmenu.P_StuMainMnu#") {
-
+        //hokiespa
         document.body.innerHTML = null;
 
-        //hokiespa
-        loadHTML("NewHeader.html", () => {
-            loadHTML('NewNeck.html', () => {
-                loadHTML('NewHokieSpaHome.html', () => {
-                    loadHTML("NewFooter.html", () => { })
-                })
-            })
-        });
+        
+        if (dispTeam) {
+            loadHTML("NewTeamHeader.html", function () {
+                loadHTML('NewHokieSpaHome.html', function () {
+                    loadHTML("NewFooter.html", function () { });
+                });
+            });
+        }
+        else {
+            loadHTML("NewHeader.html", function () {
+                loadHTML('NewHokieSpaHome.html', function () {
+                    loadHTML("NewFooter.html", function () { });
+                });
+            });
+        }
     }
+    else if (destURL == "https://banweb.banner.vt.edu/ssb/prod/twbkwbis.P_GenMenu?name=pmenu.P_MainMnu") {
+    //hokieteam
+
+    document.body.innerHTML = null;
+
+    loadHTML("NewTeamHeader.html", () => {
+        loadHTML('NewHokieTEAM.html', () => {
+            loadHTML("NewFooter.html", () => { })
+        })
+    });
+
+}
     else if (destURL == "https://banweb.banner.vt.edu/ssb/prod/twbkwbis.P_GenMenu?name=bmenu.P_GenMnu") {
         //hokieplus
 
         document.body.innerHTML = null;
 
-        loadHTML("NewHeader.html", () => {
-            loadHTML('NewHokiePLUS.html', () => {
-                loadHTML("NewFooter.html", () => { })
-            })
-        });
-
+        if (dispTeam) {
+            loadHTML("NewTeamHeader.html", function () {
+                loadHTML('NewHokiePLUS.html', function () {
+                    loadHTML("NewFooter.html", function () { });
+                });
+            });
+        }
+        else {
+            loadHTML("NewHeader.html", function () {
+                loadHTML('NewHokiePLUS.html', function () {
+                    loadHTML("NewFooter.html", function () { });
+                });
+            });
+        }
     }
 
     // deleting all of the css in the window so it doesnt screw with my stuff
