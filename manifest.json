@@ -14,11 +14,13 @@
     "NewHome.html",
     "NewResults.html",
     "NewHokieSpaHome.html",
+    "NewHokieTEAM.html", 
     "NewHokiePLUS.html",
     "NewNeck.html",
     "NewHeader.html",
     "NewFooter.html",
-    "NewListElement.html"
+    "NewListElement.html",
+    "NewTeamHeader.html"
   ],
   "content_scripts": [
     {
@@ -27,7 +29,8 @@
         "https://banweb.banner.vt.edu/ssb/prod/twbkwbis.P_GenMenu?name=bmenu.P_MainMnu",
         "https://banweb.banner.vt.edu/ssb/prod/twbksrch.P_ShowResults",
         "https://banweb.banner.vt.edu/ssb/prod/twbkwbis.P_GenMenu?name=bmenu.P_StuMainMnu",
-        "https://banweb.banner.vt.edu/ssb/prod/twbkwbis.P_GenMenu?name=bmenu.P_GenMnu"
+        "https://banweb.banner.vt.edu/ssb/prod/twbkwbis.P_GenMenu?name=bmenu.P_GenMnu",
+		    "https://banweb.banner.vt.edu/ssb/prod/twbkwbis.P_GenMenu?name=pmenu.P_MainMnu"
       ],
       "css": [
         "css/uikit-rtl.css",
